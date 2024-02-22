@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="description"
+          content="LangXAI: Integrating Large Vision Models for Generating
+                        Textual Explanations to Enhance Explainability in Visual Perception Tasks.">
+    <meta name="keywords" content="LangXAI, Explainable AI, Large Vision Models">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>LangXAI: Integrating Large Vision Models for Generating Textual Explanations to Enhance Explainability in
+        Visual Perception Tasks</title>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'G-PYVRSFMDRL');
+    </script>
+
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+          rel="stylesheet">
+
+    <link rel="stylesheet" href="./static/css/bulma.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="./static/css/index.css">
+    <link rel="icon" href="./static/images/favicon.svg">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script src="./static/js/bulma-carousel.min.js"></script>
+    <script src="./static/js/bulma-slider.min.js"></script>
+    <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+    </div>
+    <!--    <div class="navbar-menu">-->
+    <!--        <div class="navbar-start" style="flex-grow: 1; justify-content: center;">-->
+    <!--            <a class="navbar-item" href="https://keunhong.com">-->
+    <!--      <span class="icon">-->
+    <!--          <i class="fas fa-home"></i>-->
+    <!--      </span>-->
+    <!--            </a>-->
+
+    <!--            <div class="navbar-item has-dropdown is-hoverable">-->
+    <!--                <a class="navbar-link">-->
+    <!--                    More Research-->
+    <!--                </a>-->
+    <!--                <div class="navbar-dropdown">-->
+    <!--                    <a class="navbar-item" href="https://hypernerf.github.io">-->
+    <!--                        HyperNeRF-->
+    <!--                    </a>-->
+    <!--                    <a class="navbar-item" href="https://nerfies.github.io">-->
+    <!--                        Nerfies-->
+    <!--                    </a>-->
+    <!--                    <a class="navbar-item" href="https://latentfusion.github.io">-->
+    <!--                        LatentFusion-->
+    <!--                    </a>-->
+    <!--                    <a class="navbar-item" href="https://photoshape.github.io">-->
+    <!--                        PhotoShape-->
+    <!--                    </a>-->
+    <!--                </div>-->
+    <!--            </div>-->
+    <!--        </div>-->
+
+    <!--    </div>-->
+</nav>
+
+
+<section class="hero">
+    <div class="hero-body">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered">
+                <div class="column has-text-centered">
+                    <h1 class="title is-1 publication-title">LangXAI: Integrating Large Vision Models for Generating
+                        Textual Explanations to Enhance Explainability in Visual Perception Tasks</h1>
+                    <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=U_v7A40AAAAJ&hl=en">Truong Thanh Hung Nguyen</a><sup>1,3</sup>,</span>
+                        <span class="author-block">
+              <a href="http://tobiasclement.com/">Tobias Clement</a><sup>2</sup>,</span>
+                        <span class="author-block">
+              <a href="https://www.linkedin.com/in/locnpt226/">Phuc Truong Loc Nguyen</a><sup>2</sup>,
+            </span>
+                        <span class="author-block">
+              <a href="https://www.it-management.rw.fau.de/person/nils-kemmerzell/">Nils Kemmerzell</a><sup>2</sup>,
+            </span>
+                        <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=TTFiKAgAAAAJ&hl=en">Van Binh Truong</a><sup>3</sup>,
+            </span>
+                        <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=uQAegakAAAAJ&hl=en">Vo Thanh Khang Nguyen</a><sup>3</sup>,
+            </span>
+                        <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=cmxDCFAAAAAJ&hl=en">Mohamed Abdelaal</a><sup>4</sup>,
+            </span>
+                        <span class="author-block">
+              <a href="https://www.hungcao.me/">Hung Cao</a><sup>1</sup>
+            </span>
+                    </div>
+
+                    <div class="is-size-5 publication-authors">
+                        <span class="author-block"><sup>1</sup>Analytics Everywhere Lab, University of New Brunswick, Canada</span>
+                        <span class="author-block"><sup>2</sup>Friedrich-Alexander-University Erlangen-Nürnberg, Germany</span></br>
+                        <span class="author-block"><sup>3</sup>Quy Nhon AI, FPT Software, Vietnam</span></br>
+                        <span class="author-block"><sup>4</sup>Software AG, Germany</span>
+                    </div>
+
+                    <div class="column has-text-centered">
+                        <div class="publication-links">
+                            <!-- PDF Link. -->
+                            <span class="link-block">
+                <a href="https://arxiv.org/pdf/2402.12525.pdf"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+                            <span class="link-block">
+                <a href="https://arxiv.org/abs/2402.12525"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+                            <!-- Video Link. -->
+                            <span class="link-block">
+                <a href="https://www.youtube.com/watch?v=ClSt89lXLEc"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span>
+                            <!-- Code Link. -->
+                            <span class="link-block">
+                <a href="https://github.com/hungntt/LangXAI"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+                            <!-- Dataset Link. -->
+                            <!--                            <span class="link-block">-->
+                            <!--                <a href="https://github.com/google/nerfies/releases/tag/0.1"-->
+                            <!--                   class="external-link button is-normal is-rounded is-dark">-->
+                            <!--                  <span class="icon">-->
+                            <!--                      <i class="far fa-images"></i>-->
+                            <!--                  </span>-->
+                            <!--                  <span>Data</span>-->
+                            <!--                  </a>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--<section class="hero teaser">-->
+<!--    <div class="container is-max-desktop">-->
+<!--        <div class="hero-body">-->
+<!--            <video id="teaser" autoplay muted loop playsinline height="100%">-->
+<!--                <source src="./static/videos/teaser.mp4"-->
+<!--                        type="video/mp4">-->
+<!--            </video>-->
+<!--            <h2 class="subtitle has-text-centered">-->
+<!--                <span class="dnerf">Nerfies</span> turns selfie videos from your phone into-->
+<!--                free-viewpoint-->
+<!--                portraits.-->
+<!--            </h2>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</section>-->
+
+
+<section class="hero is-light is-small">
+    <div class="hero-body">
+        <div class="container">
+            <img class="columns is-centered has-text-centered" src="./static/images/overview.png" alt="Teaser"
+                 width="80%"
+                 style="margin:0 auto">
+            <br>
+            <figcaption>
+                <p style="text-align: center;">
+                    <font color="061E61">
+                        <b>Figure 1:</b> The interface of LangXAI showcases how it operates to make AI decisions
+                        in the classification task, which is designed straightforwardly with guidance so
+                        end-users can comprehend and monitor end-to-end explanations.
+                    </font>
+                </p>
+            </figcaption>
+        </div>
+    </div>
+</section>
+
+
+<section class="section">
+    <div class="container is-max-desktop">
+
+        <!-- Abstract. -->
+        <div class="columns is-centered has-text-centered">
+            <div class="column is-four-fifths">
+                <h2 class="title is-3">Abstract</h2>
+                <div class="content has-text-justified">
+                    LangXAI is a framework that integrates Explainable Artificial Intelligence (XAI) with advanced
+                    vision models to generate textual explanations for visual recognition tasks. Despite XAI
+                    advancements, an understanding gap persists for end-users with limited domain knowledge in
+                    artificial intelligence and computer vision. LangXAI addresses this by furnishing text-based
+                    explanations for classification, object detection, and semantic segmentation model outputs to
+                    end-users. Preliminary results demonstrate LangXAI's enhanced plausibility, with high BERTScore
+                    across tasks, fostering a more transparent and reliable AI framework on vision tasks for end-users.
+                </div>
+            </div>
+        </div>
+        <!--/ Abstract. -->
+
+        <!-- Paper video. -->
+        <div class="columns is-centered has-text-centered">
+            <div class="column is-four-fifths">
+                <h2 class="title is-3">Video</h2>
+                <div class="publication-video">
+                    <iframe src="https://www.youtube.com/embed/ClSt89lXLEc?rel=0&amp;showinfo=0"
+                            frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+        <!--/ Paper video. -->
+    </div>
+</section>
+
+<section class="section">
+    <div class="container is-max-desktop">
+
+        <div class="columns is-centered has-text-centered">
+            <h2 class="title is-2">Framework</h2>
+            <br>
+        </div>
+        <img class="columns is-centered has-text-centered" src="./static/images/arch.png" alt="Teaser"
+             width="100%"
+             style="margin:0 auto">
+        <br>
+        <figcaption>
+            <p style="text-align: center;">
+                <font color="061E61">
+                    <b>Figure 2:</b> Our framework is split into two parts for explaining decisions made by AI models in
+                    CV tasks. The first part (in white blocks) generates saliency maps, where the XAI method in bold is
+                    used to generate the saliency map. The second part (in gray blocks) combines the input image,
+                    saliency map, ground truth, and prediction to provide a text-based explanation under prompts for
+                    each task.
+                </font>
+            </p>
+        </figcaption>
+        <br>
+        <br>
+
+        <!-- Architecture -->
+        <div class="columns is-centered">
+            <div class="column is-full-width">
+                <div class="columns is-centered has-text-centered">
+                    <h4 class="title is-4">Block 1: Saliency Map Extraction with XAI</h4>
+                </div>
+
+                <div class="content has-text-justified">
+                    <p>
+                        The first part of our framework focuses on generating saliency maps using XAI methods from
+                        various CV models tailored for different tasks. The process involves uploading an image and
+                        selecting the desired task, with specific models assigned accordingly: Swin Transformer
+                        v2 for classification, DeepLabv3-ResNet50 and
+                        ResNet101 for semantic segmentation, and Faster
+                        R-CNN and YOLOX for object detection. Following the
+                        image analysis, users can specify the predicted class and choose the XAI method to generate
+                        saliency maps, which highlights the areas of interest for the model's decision-making process.
+                    </p>
+                    <br>
+                </div>
+                <br/>
+
+                <div class="columns is-centered has-text-centered">
+                    <h4 class="title is-4">Block 2: Text-based Explanation with LVM</h4>
+                </div>
+
+                <div class="content has-text-justified">
+                    <p>
+                        In the second part, we integrate various data to aid the LVM in generating text-based
+                        explanations for end-users unfamiliar with AI and CV. The GPT-4 Vision serves as
+                        the core LVM in our framework, leveraging information such as the input image, ground truth,
+                        model's top-1 prediction, and saliency map. We employ a structured prompt for each task,
+                        starting with presenting the image and saliency map to help the LVM identify focal areas. We
+                        then combine the saliency map with the model's prediction to verify the accuracy. In the end, we
+                        compare the model's prediction with the ground truth to determine the reliability and assess
+                        potential confusion by background or other objects. This comprehensive process ensures
+                        explanations are both coherent and indeed based on the model's visual analysis of the image.
+                    </p>
+                    <br>
+                </div>
+                <br/>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--<section class="section">-->
+<!--    <div class="container is-max-desktop">-->
+
+<!--        <div class="columns is-centered">-->
+
+<!--            &lt;!&ndash; Visual Effects. &ndash;&gt;-->
+<!--            <div class="column">-->
+<!--                <div class="content">-->
+<!--                    <h2 class="title is-3">Visual Effects</h2>-->
+<!--                    <p>-->
+<!--                        Using <i>nerfies</i> you can create fun visual effects. This Dolly zoom effect-->
+<!--                        would be impossible without nerfies since it would require going through a wall.-->
+<!--                    </p>-->
+<!--                    <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">-->
+<!--                        <source src="./static/videos/dollyzoom-stacked.mp4"-->
+<!--                                type="video/mp4">-->
+<!--                    </video>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            &lt;!&ndash;/ Visual Effects. &ndash;&gt;-->
+
+<!--            &lt;!&ndash; Matting. &ndash;&gt;-->
+<!--            <div class="column">-->
+<!--                <h2 class="title is-3">Matting</h2>-->
+<!--                <div class="columns is-centered">-->
+<!--                    <div class="column content">-->
+<!--                        <p>-->
+<!--                            As a byproduct of our method, we can also solve the matting problem by ignoring-->
+<!--                            samples that fall outside of a bounding box during rendering.-->
+<!--                        </p>-->
+<!--                        <video id="matting-video" controls playsinline height="100%">-->
+<!--                            <source src="./static/videos/matting.mp4"-->
+<!--                                    type="video/mp4">-->
+<!--                        </video>-->
+<!--                    </div>-->
+
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        &lt;!&ndash;/ Matting. &ndash;&gt;-->
+
+<!--        &lt;!&ndash; Animation. &ndash;&gt;-->
+<!--        <div class="columns is-centered">-->
+<!--            <div class="column is-full-width">-->
+<!--                <h2 class="title is-3">Animation</h2>-->
+
+<!--                &lt;!&ndash; Interpolating. &ndash;&gt;-->
+<!--                <h3 class="title is-4">Interpolating states</h3>-->
+<!--                <div class="content has-text-justified">-->
+<!--                    <p>-->
+<!--                        We can also animate the scene by interpolating the deformation latent codes of two input-->
+<!--                        frames. Use the slider here to linearly interpolate between the left frame and the right-->
+<!--                        frame.-->
+<!--                    </p>-->
+<!--                </div>-->
+<!--                <div class="columns is-vcentered interpolation-panel">-->
+<!--                    <div class="column is-3 has-text-centered">-->
+<!--                        <img src="./static/images/interpolate_start.jpg"-->
+<!--                             class="interpolation-image"-->
+<!--                             alt="Interpolate start reference image."/>-->
+<!--                        <p>Start Frame</p>-->
+<!--                    </div>-->
+<!--                    <div class="column interpolation-video-column">-->
+<!--                        <div id="interpolation-image-wrapper">-->
+<!--                            Loading...-->
+<!--                        </div>-->
+<!--                        <input class="slider is-fullwidth is-large is-info"-->
+<!--                               id="interpolation-slider"-->
+<!--                               step="1" min="0" max="100" value="0" type="range">-->
+<!--                    </div>-->
+<!--                    <div class="column is-3 has-text-centered">-->
+<!--                        <img src="./static/images/interpolate_end.jpg"-->
+<!--                             class="interpolation-image"-->
+<!--                             alt="Interpolation end reference image."/>-->
+<!--                        <p class="is-bold">End Frame</p>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <br/>-->
+<!--                &lt;!&ndash;/ Interpolating. &ndash;&gt;-->
+
+<!--                &lt;!&ndash; Re-rendering. &ndash;&gt;-->
+<!--                <h3 class="title is-4">Re-rendering the input video</h3>-->
+<!--                <div class="content has-text-justified">-->
+<!--                    <p>-->
+<!--                        Using <span class="dnerf">Nerfies</span>, you can re-render a video from a novel-->
+<!--                        viewpoint such as a stabilized camera by playing back the training deformations.-->
+<!--                    </p>-->
+<!--                </div>-->
+<!--                <div class="content has-text-centered">-->
+<!--                    <video id="replay-video"-->
+<!--                           controls-->
+<!--                           muted-->
+<!--                           preload-->
+<!--                           playsinline-->
+<!--                           width="75%">-->
+<!--                        <source src="./static/videos/replay.mp4"-->
+<!--                                type="video/mp4">-->
+<!--                    </video>-->
+<!--                </div>-->
+<!--                &lt;!&ndash;/ Re-rendering. &ndash;&gt;-->
+
+<!--            </div>-->
+<!--        </div>-->
+<!--        &lt;!&ndash;/ Animation. &ndash;&gt;-->
+
+
+<!--        &lt;!&ndash; Concurrent Work. &ndash;&gt;-->
+<!--        <div class="columns is-centered">-->
+<!--            <div class="column is-full-width">-->
+<!--                <h2 class="title is-3">Related Links</h2>-->
+
+<!--                <div class="content has-text-justified">-->
+<!--                    <p>-->
+<!--                        There's a lot of excellent work that was introduced around the same time as ours.-->
+<!--                    </p>-->
+<!--                    <p>-->
+<!--                        <a href="https://arxiv.org/abs/2104.09125">Progressive Encoding for Neural Optimization</a>-->
+<!--                        introduces an idea similar to our windowed position encoding for coarse-to-fine optimization.-->
+<!--                    </p>-->
+<!--                    <p>-->
+<!--                        <a href="https://www.albertpumarola.com/research/D-NeRF/index.html">D-NeRF</a> and <a-->
+<!--                            href="https://gvv.mpi-inf.mpg.de/projects/nonrigid_nerf/">NR-NeRF</a>-->
+<!--                        both use deformation fields to model non-rigid scenes.-->
+<!--                    </p>-->
+<!--                    <p>-->
+<!--                        Some works model videos with a NeRF by directly modulating the density, such as <a-->
+<!--                            href="https://video-nerf.github.io/">Video-NeRF</a>, <a-->
+<!--                            href="https://www.cs.cornell.edu/~zl548/NSFF/">NSFF</a>, and <a-->
+<!--                            href="https://neural-3d-video.github.io/">DyNeRF</a>-->
+<!--                    </p>-->
+<!--                    <p>-->
+<!--                        There are probably many more by the time you are reading this. Check out <a-->
+<!--                            href="https://dellaert.github.io/NeRF/">Frank Dellart's survey on recent NeRF papers</a>,-->
+<!--                        and <a href="https://github.com/yenchenlin/awesome-NeRF">Yen-Chen Lin's curated list of NeRF-->
+<!--                        papers</a>.-->
+<!--                    </p>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        &lt;!&ndash;/ Concurrent Work. &ndash;&gt;-->
+
+<!--    </div>-->
+<!--</section>-->
+
+
+<section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+        <h2 class="title">BibTeX</h2>
+        <pre><code>@misc{nguyen2024langxai,
+      title={LangXAI: Integrating Large Vision Models for Generating Textual Explanations to Enhance Explainability in Visual Perception Tasks},
+      author={Truong Thanh Hung Nguyen and Tobias Clement and Phuc Truong Loc Nguyen and Nils Kemmerzell and Van Binh Truong and Vo Thanh Khang Nguyen and Mohamed Abdelaal and Hung Cao},
+      year={2024},
+      eprint={2402.12525},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV}
+}</code></pre>
+    </div>
+</section>
+
+
+<footer class="footer">
+    <div class="container">
+        <!--        <div class="content has-text-centered">-->
+        <!--            <a class="icon-link"-->
+        <!--               href="./static/videos/nerfies_paper.pdf">-->
+        <!--                <i class="fas fa-file-pdf"></i>-->
+        <!--            </a>-->
+        <!--            <a class="icon-link" href="https://github.com/hungntt" class="external-link" disabled>-->
+        <!--                <i class="fab fa-github"></i>-->
+        <!--            </a>-->
+        <!--        </div>-->
+        <div class="columns is-centered">
+            <div class="column is-8">
+                <div class="content">
+                    <p>
+                        This website is licensed under a <a rel="license"
+                                                            href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+                        Commons Attribution-ShareAlike 4.0 International License</a>.
+                    </p>
+                    <p>
+                        The webpage is built based on <a
+                            href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
